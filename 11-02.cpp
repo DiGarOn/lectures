@@ -62,12 +62,13 @@ public:
     //iterator erase(ItFirst, ItLast);
 
     void pop_back();//
-    void push_back(T);//
+    void push_back(const T &);//
     void pop_front();//
     //void push_front(T);
 
     void resize(size_type);
     void swap(LinkedList &);
+    friend LinkedList& operator =(const LinkedList &);
 };
 
 template<typename T>
@@ -88,13 +89,17 @@ public:
 template<typename T>
 LinkedList<T>::ListNode::ListNode(): value(), next(0){}
 
-LinkedList::LinkedList():count(0), head(0), tail(0){}
+template<typename T>
+LinkedList<T>::LinkedList():count(0), head(0), tail(0){}
 
 template<typename T>
 LinkedList<T>::ListNode(const T& val): value(val.value), next(val.next){}
 
-LinkedList::~LinkedList():{}
-void LinkedList::copy(const LinkedList & other){
+template<typename T>
+LinkedList<T>::~LinkedList(){}
+
+template<typename T>
+void LinkedList<T>::copy(const LinkedList & other){
     if(other.count) {
         ListNode *cur1 = new ListNode(other.head);
         ListNode *cur2 = other.head->next;
@@ -109,16 +114,19 @@ void LinkedList::copy(const LinkedList & other){
     }
 }
 
-LinkedList::LinkedList(const LinkedList & other):count(0), head(0), tail(0) {
+template<typename T>
+LinkedList<T>::LinkedList(const LinkedList & other):count(0), head(0), tail(0) {
     copy(other);
 }
 
-LinkedList& LinkedList::operator =(const LinkedList & other) {
+template<typename T>
+LinkedList& LinkedList<T>::operator =(const LinkedList & other) {
     if(this != &other) copy(other);
     return *this;
 }
 
-LinkedList::LinkedList(size_type size): count(count), head(0), tail(0) {
+template<typename T>
+LinkedList<T>::LinkedList(size_type size): count(count), head(0), tail(0) {
     if(count) {
         ListNode * cur = new ListNode;
         head = cur;
@@ -130,28 +138,33 @@ LinkedList::LinkedList(size_type size): count(count), head(0), tail(0) {
     }
 }
 
-bool LinkedList::empty() const {
+template<typename T>
+bool LinkedList<T>::empty() const {
     return count == 0;
 }
 
-typename LinkedList::size_type LinkedList::size() const {
+template<typename T>
+typename LinkedList::size_type LinkedList<T>::size() const {
     return count;
 }
 
-void LinkedList::clear() {
+template<typename T>
+void LinkedList<T>::clear() {
     while(count) pop_front();
     head = 0;
     tail = 0;
 }
 
-void LinkedList::pop_front() {
+template<typename T>
+void LinkedList<T>::pop_front() {
     Listnode *tmp = head;
     head = tmp->next;
     delete tmp;
     --count;
 }
 
-void LinkedList::pop_back() {
+template<typename T>
+void LinkedList<T>::pop_back() {
     ListNode *tmp = head;
     while(cur->next != tail) {
         cur = cur->next;
@@ -162,7 +175,8 @@ void LinkedList::pop_back() {
     --count;
 }
 
-void LinkedList::swap(LincedList & other) {
+template<typename T>
+void LinkedList<T>::swap(LinkedList<T> & other) {
     ListNode * n = head;
     head = other.head;
     other.head = n;
@@ -174,7 +188,8 @@ void LinkedList::swap(LincedList & other) {
     other.count = c;
 }
 
-void LinkedList::resize(size_type size) {
+template<typename T>
+void LinkedList<T>::resize(size_type size) {
     ListNode *cur;
     if(count == 0 && size > 0) {
         head = new ListNode;
