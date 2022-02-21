@@ -3,6 +3,26 @@
 
 using namespace std;
 
+/*
+
+* * * *   *       * * * * * *  * * * * *   * * * *     * * * * *   *       *       |   | 1, 
+*      *  * *   * *     *          *       *      *        *        *     *        |   | 1, 
+*       * *  * *  *     *          *       * * * *         *         *   *         | x6| 1, 
+*       * *   *   *     *          *       * *             *           *           |   | 1, 
+*      *  *       *     *          *       *   *           *           *           |   | 1, 
+* * * *   *       * * * * * *      *       *     *     * * * * *       *           |   | 1, 
+
+[*, ,*, ,*, ,*, , ] [*, , , , , , , ,*] [*, ,*, ,*, ,*, ,*]   [*, ,*, ,*, ,*, ,*]   [*, ,*, ,*, ,*, , ]   [*, ,*, ,*, ,*, ,*]   [*, , , , , , , ,*]       |   | 1, 
+[*, , , , , , ,*, ] [*, ,*, , , ,*, ,*] [ , , , ,*, , , , ]   [ , , , ,*, , , , ]   [*, , , , , , ,*, ]   [ , , , ,*, , , , ]   [ ,*, , , , , ,*, ]       |   | 1, 
+[*, , , , , , , ,*] [*, , ,*, ,*, , ,*] [ , , , ,*, , , , ]   [ , , , ,*, , , , ]   [*, ,*, ,*, ,*, , ]   [ , , , ,*, , , , ]   [ , ,*, , , ,*, , ]       | x6| 1, 
+[*, , , , , , , ,*] [*, , , ,*, , , ,*] [ , , , ,*, , , , ]   [ , , , ,*, , , , ]   [*, ,*, , , , , , ]   [ , , , ,*, , , , ]   [ , , , ,*, , , , ]       |   | 1, 
+[*, , , , , , ,*, ] [*, , , , , , , ,*] [ , , , ,*, , , , ]   [ , , , ,*, , , , ]   [*, , , ,*, , , , ]   [ , , , ,*, , , , ]   [ , , , ,*, , , , ]       |   | 1, 
+[*, ,*, ,*, ,*, , ] [*, , , , , , , ,*] [*, ,*, ,*, ,*, ,*]   [ , , , ,*, , , , ]   [*, , , , , ,*, , ]   [*, ,*, ,*, ,*, ,*]   [ , , , ,*, , , , ]       |   | 1, 
+
+
+*/
+
+/*
 size_t pow(size_t g, size_t k, size_t m) {
     //рассмотрим немного крайних случаев
     if(g == 0) {
@@ -33,9 +53,10 @@ size_t pow(size_t g, size_t k, size_t m) {
 }
 
 //решение работает примерно за логарифм
+*/
 
-int q = 3;
-int R = 256;
+int q = 1000;
+int R = 123987123;
 
 int h(string s) {
     int res = 0;
@@ -47,10 +68,86 @@ int h(string s) {
     return res;
 }
 
+string str = "01234567890abcdefgjklmnopqtsuvwhyzABCDEFGJKLMNOPQTSUVWHYZ";
+
+string create_string() {
+    int len = rand() % 20;
+    string res = "";
+    for(int i = 0; i < len; i++) {
+        res += str[rand()%str.size()];
+    }
+    return res;
+}
+
 int main() {
-    string s = "ABACB";
 
-    cout << h(s);
+/*
+    string s = "";
+    for(int k = 0; k < str.size(); k++) {
+        s += str[k];
+        int c = h(s);
+        string b = s;
+        for(int j = 0; j < str.size(); j++) {
+            for(int i = 0; i < 50; i++) {
+                b += str[j];
+                int d = h(b);
+                if(c == d) {
+                    cout << s << endl;
+                    cout << b << endl;
+                    exit(0);
+                }
+            }
+            b = s;
+        }
+    }
+*/
 
+/*
+    string s1, s2;
+    s1 = create_string();
+    s2 = create_string();
+    
+    while(!((s1 != s2) && (h(s1) == h(s2)))) {
+        //cout << "s1: " << s1 << endl;
+        //cout << "s2: " << s2 << endl;
+        s1 = create_string();
+        s2 = create_string();
+    }
+    
+    cout << "s1: " << s1 << endl;
+    //tNbC5VySk9Zlcv92
+    cout << "s2: " << s2 << endl;
+    //kpLDh5OTsnqNN037o
+    s1 = "tNbC5VySk9Zlcv92";
+    s2 = "kpLDh5OTsnqNN037o";
+    cout << h(s1) << " : " << h(s2);
+*/
+
+
+//    string s = "hash";
+//    cout << h(s);
+
+    string s1, s2;
+    s1 = create_string();
+    s2 = create_string();
+    
+    while(!((s1 != s2) && (h(s1) == h(s2)))) {
+        //cout << "s1: " << s1 << endl;
+        //cout << "s2: " << s2 << endl;
+        s1 = create_string();
+        s2 = create_string();
+    }
+    
+    cout << "s1: " << s1 << endl;
+    cout << "s2: " << s2 << endl;
+    //aPSJt0Z0P1Hf
+    //2VpjAEhs0yJdY
+    //s1 = "aPSJt0Z0P1Hf";
+    //s2 = "2VpjAEhs0yJdY";
+    cout << h(s1) << " : " << h(s2)  << endl;
+
+    s1 = "tNbC5VySk9Zlcv92";
+    s2 = "kpLDh5OTsnqNN037o";
+    cout << h(s1) << " : " << h(s2);
     return 0;
 }
