@@ -93,7 +93,7 @@ template<typename T>
 LinkedList<T>::LinkedList():count(0), head(0), tail(0){}
 
 template<typename T>
-LinkedList<T>::ListNode(const T& val): value(val.value), next(val.next){}
+LinkedList<T>::ListNode::ListNode(const T& val): value(val.value), next(val.next){}
 
 template<typename T>
 LinkedList<T>::~LinkedList(){}
@@ -120,7 +120,7 @@ LinkedList<T>::LinkedList(const LinkedList & other):count(0), head(0), tail(0) {
 }
 
 template<typename T>
-LinkedList& LinkedList<T>::operator =(const LinkedList & other) {
+LinkedList<T>& LinkedList<T>::operator =(const LinkedList<T> & other) {
     if(this != &other) copy(other);
     return *this;
 }
@@ -144,7 +144,7 @@ bool LinkedList<T>::empty() const {
 }
 
 template<typename T>
-typename LinkedList::size_type LinkedList<T>::size() const {
+typename LinkedList<T>::size_type LinkedList<T>::size() const {
     return count;
 }
 
@@ -268,7 +268,7 @@ public:
         if(node) node = node->next;
         return *this;
     }
-};
+};  
 
 int main() {
 

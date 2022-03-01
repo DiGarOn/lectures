@@ -133,6 +133,19 @@ set_intersection
 set_symetric_difference
 set_union
 sort
+sort_heap
+stable_partition
+stable_sort
+swap
+swap_rangers
+transform
+unique
+unique_copy
+upper_bound
+accumulate
+adjacent_difference
+inner_product
+partial_sum
 
 
 */
