@@ -58,7 +58,12 @@ path - есть автоматическое преобразование из c
     status - статус файла 
     temp_directory_path - все под tmp 
 
-
+posix
+    <sys/types.h>
+    <dirent.h>
+    DIR* opendir(const char*);
+    struct dirent *readdir(DIR*);
+    
 
 */
 
