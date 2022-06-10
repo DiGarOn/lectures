@@ -36,7 +36,7 @@ public:
     /* 3 - 0 копий */A(std::string && s) : s(std::move(s)) {};
 };
 
-int && fu() {return std::move(42);}
+int && fu() {return std::move(42);} 
 
 //std::auto_ptr
 //Си++98/03 :   std::auto_ptr - появилось и должно было при работе с неокторыми ресурсами записывать количество пользователей
