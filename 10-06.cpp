@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <variant>
 
 using namespace std;
 
@@ -77,9 +79,44 @@ consteval - для функций. это функции, которые гар�
 
 */
 
+class Object {
+public:
+    void Act() const;
+    void Mut1();
+    void Mut2();
+};
+
+class Visitor {
+public:
+    void visit(Object *);
+};
+
+struct Malt{};
+struct Hops{};
+struct Yast{};
+struct VisitPackage {
+    void operator()(const Malt &) {cout << "Malt" << endl;}
+    void operator()(const Hops &) {cout << "Malt" << endl;}
+    void operator()(const Yast &) {cout << "Malt" << endl;}
+};
+
 int main() {
 
+    std::variant<Malt, Hops, Yast> package = {Malt()};
+
+    std::visit(VisitPackage(), package);
+/*
+    std::vector<Object *> objs;
+    for(const auto & i:objs) {
+        i->Act();
+    }
     
+    //Паттерн Посетитель
+    Visitor v;
+    for(const auto & i:objs) {
+        v.visit(i);
+    }
+*/
 
     return 0;
 }
