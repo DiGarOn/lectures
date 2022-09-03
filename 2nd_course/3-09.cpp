@@ -15,8 +15,24 @@ qt - Шлее
     Профилировщики, 
     система тестирования, 
     анализаторы кода
+    средства инструментирования 
 
 make - система сбоки, управления сборкой, автоматизацией сборки 
+automake 
+
+Portable Operation System Interface standart 
+
+XPG4 -> IEEE 1003 -> ISO/IEC 4599
+потоки OSPIX -> POSIX 1003.1.c-1996
+
+Система автоматизации и управления сборкой make
+
+gmake -> GNUMakefile  \   | Правила      |
+make  -> Makefile     - > | разрешения   |
+     \-> -f build.make/   | зависимостей |
+
+pmake - BSD
+nmake - by microsoft in visual studia
 
 
 
