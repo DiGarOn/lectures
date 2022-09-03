@@ -42,12 +42,24 @@ kek: lol nya
 nya: lol
 -> echo "\"\\w\/\""
 ___________________
-lol: lol.c
+lol.o: lol.c
 -> gcc -c lol.c
 kek: lol nya
 -> gcc lol.o nya.o -o kek
-nya: lol nya.c
+nya.o: lol.o nya.c
 -> gcc -c nya.c
+________________________
+lol.o: lol.c
+-> gcc -c lol.c
+kek: lol nya
+-> gcc $^ -o $@
+nya.o: lol.o nya.c
+-> gcc -c nya.c
+_____________________
+kek: lol nya
+-> $(cc) $^ $LDFLAGS -o $@
+
+
 
 */
 
