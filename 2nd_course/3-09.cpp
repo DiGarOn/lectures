@@ -34,7 +34,20 @@ make  -> Makefile     - > | разрешения   |
 pmake - BSD
 nmake - by microsoft in visual studia
 
-
+ex:
+lol:
+-> echo "LOL"
+kek: lol nya
+-> echo "KEK"
+nya: lol
+-> echo "\"\\w\/\""
+___________________
+lol: lol.c
+-> gcc -c lol.c
+kek: lol nya
+-> gcc lol.o nya.o -o kek
+nya: lol nya.c
+-> gcc -c nya.c
 
 */
 
