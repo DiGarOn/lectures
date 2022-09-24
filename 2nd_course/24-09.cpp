@@ -38,6 +38,9 @@ QGraphicsItem
 |    QGraphicsObject -> QObject
 QGraphicsWidget -> QWidget
 
+Упрощенный вариант 
+QGraphicsScene / QSceneView
+
 
 
 */
